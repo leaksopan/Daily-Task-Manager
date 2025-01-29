@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Daily Task Manager</h1>
+            <div class="view-controls">
+                <button onclick="switchView('daily')" class="active">Daily</button>
+                <button onclick="switchView('weekly')">Weekly</button>
+                <button onclick="showStatistics()">Statistics</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Task Creation Form -->
+            <div class="task-form">
+                <div class="input-group">
+                    <input type="text" id="taskInput" placeholder="Add a task...">
+                    <select id="taskCategory">
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="exercise">Exercise</option>
+                        <option value="study">Study</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <select id="taskPriority">
+                        <option value="high">High Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="low">Low Priority</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <input type="date" id="taskDate">
+                    <input type="time" id="startTime" step="60">
+                    <input type="time" id="endTime" step="60">
+                    <select id="recurringType">
+                        <option value="none">One-time</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <select id="reminderTime">
+                        <option value="5">5 min before</option>
+                        <option value="15">15 min before</option>
+                        <option value="30">30 min before</option>
+                        <option value="60">1 hour before</option>
+                    </select>
+                    <textarea id="taskDescription" placeholder="Add description or notes..."></textarea>
+                </div>
+                <button onclick="addTask()" class="add-button">Add Task</button>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters">
+                <select id="categoryFilter" onchange="applyFilters()">
+                    <option value="all">All Categories</option>
+                    <option value="work">Work</option>
+                    <option value="personal">Personal</option>
+                    <option value="exercise">Exercise</option>
+                    <option value="study">Study</option>
+                    <option value="other">Other</option>
+                </select>
+                <select id="statusFilter" onchange="applyFilters()">
+                    <option value="all">All Status</option>
+                    <option value="not-started">Not Started</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+                <select id="priorityFilter" onchange="applyFilters()">
+                    <option value="all">All Priorities</option>
+                    <option value="high">High Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="low">Low Priority</option>
+                </select>
+            </div>
+
+            <!-- Task Lists -->
+            <div id="taskContainer">
+                <div id="dailyView" class="task-view active">
+                    <ul id="taskList"></ul>
+                </div>
+                <div id="weeklyView" class="task-view">
+                    <div class="week-grid"></div>
+                </div>
+
+                <div class="data-controls">
+                    <button onclick="exportTasks()">Export Tasks</button>
+                    <input type="file" id="importInput" accept=".json" onchange="importTasks(event)" style="display: none;">
+                    <button onclick="document.getElementById('importInput').click()">Import Tasks</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Modal -->
+        <div id="statisticsModal" class="modal">
+            <div class="modal-content">
+                <h2>Task Statistics</h2>
+                <div id="statisticsContent"></div>
+                <button onclick="closeStatistics()">Close</button>
+            </div>
+        </div>
+
+        <!-- Task Details Modal -->
+        <div id="taskDetailsModal" class="modal">
+            <div class="modal-content">
+                <h2>Task Details</h2>
+                <div id="taskDetailsContent"></div>
+                <button onclick="closeTaskDetails()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export/Import Controls -->
+    
+
+    <!-- Add to index.html -->
+<div id="calendarView" class="task-view">
+    <div class="calendar-header">
+        <button onclick="prevMonth()">❮</button>
+        <h2 id="currentMonth"></h2>
+        <button onclick="nextMonth()">❯</button>
+    </div>
+    <div class="calendar-grid" id="calendarGrid"></div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
