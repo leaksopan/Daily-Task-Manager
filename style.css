@@ -258,7 +258,30 @@ li[data-priority="low"] { background-color: #f1f8e9; }
 }
 
 #taskDetailsModal h4 {
-    color: #2c3e50;
+    color: #0080ff;
     margin-bottom: 15px;
 }
 
+/* Motivational Quotes */
+.quote-card {
+    background: #fff3e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+    border-left: 4px solid #FF9800;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#dailyQuote {
+    font-size: 1.1em;
+    color: #2c3e50;
+    margin: 0;
+    font-style: italic;
+}
+
+.quote-author {
+    text-align: right;
+    color: #607D8B;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
